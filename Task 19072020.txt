@@ -1,0 +1,84 @@
+1. Can you explain about DOM and the browser components?
+Ans. 
+
+2. Why we need an IP address and mac address?
+Ans.A Mac Address is the physical or virtual address of your NIC card or network interface. From a computer on a network's standpoint,
+it is the physical address of that computer's NIC card. It is used to bring information to that computer on Layer 2 of the OSI model.
+
+The IP address is required on layer 3. You require it to communicate with computers on different subnets and devices.
+The IP Address verifies "where" the device is located within a network.
+
+The IP addresses and Mac Addresses are used in tandem.
+Address Resolution Protocol is used to link the two together by resolving IP Addresses to Mac Addresses within the Link Layer within a single network.
+
+3. Are JS and Java are the same?
+Ans.  JavaScript :
+JavaScript is a lightweight programming language(“scripting language”) and used to make web pages interactive. It can insert dynamic text into HTML.
+JavaScript is also known as browser’s language. JavaScript(JS) is not similar or related to Java. Both the languages have a C like a syntax and are widely used in client-side Web applications, but there are few similarities only.
+Java :
+Java is an object-oriented programming language and have virtual machine platform that allows you to create compiled programs that run on nearly every platform. Java promised, 
+“Write Once, Run Anywhere”.
+
+4. What are the various Layout and JS engines?
+Ans. Layout
+Parsing a web page into a DOM tree isn't terribly difficult to understand since (well-formed) HTML is already in a tree structure. So I don't think there's much to it except when you want to also annotate things like CSS, conditional code, and scripts into your tree. 
+JS Engine
+JavaScript is a multi-paradigm prototype-based language, which uses JavaScript Engine such as Chrome’s V8 engine Firefox SpiderMonkey engine and etc. They convert the high level code into machine-readable code which lets computer to perform some specific tasks. 
+
+5. What's a programming paradigm?
+Ans. Definition. A programming paradigm is a style, or “way,” of programming. Some languages make it easy to write in some paradigms but not others. Never use the phrase “programming language paradigm.” A paradigm is a way of doing something (like programming), not a concrete thing (like a language).
+
+6. Features of JS?
+Ans. JavaScript is a object-based scripting language.
+Giving the user more control over the browser.
+It Handling dates and time.
+It Detecting the user's browser and OS,
+It is light weighted.
+JavaScript is a scripting language and it is not java.
+JavaScript is interpreter based scripting language.
+JavaScript is case sensitive.
+JavaScript is object based language as it provides predefined objects.
+Every statement in javascript must be terminated with semicolon (;).
+Most of the javascript control statements syntax is same as syntax of control statements in C language.
+An important part of JavaScript is the ability to create new functions within scripts. Declare a function in JavaScript using function keyword.
+
+7. What happens when you hit a website? Explain the flow in detail.?
+Ans. This is how I would explain it:
+
+You enter a URL into a web browser
+The browser looks up the IP address for the domain name via DNS
+The browser sends a HTTP request to the server
+The server sends back a HTTP response
+The browser begins rendering the HTML
+The browser sends requests for additional objects embedded in HTML (images, css, JavaScript) and repeats steps 3-5.
+Once the page is loaded, the browser sends further async requests as needed.
+That’s really it. Here’s a description in words for this site.
+
+When you type “https://wsvincent.com” into your browser the first thing that happens is a Domain Name Server (DNS) matches “wsvincent.com” to an IP address. Then the browser sends an HTTP request to the server and the server sends back an HTTP response. The browser begins rendering the HTML on the page while also requesting any additional resources such as CSS, JavaScript, images, etc. Each subsequent request completes a request/response cycle and is rendered in turn by the browser. Then once the page is loaded some sites (though not mine) will make further asynchronous requests.
+
+If I were asked to explain further I might start talking about how the server and browser connect via TCP. And we could discuss encryption via https, too.
+
+8.What are the HTTP error codes?
+Ans. HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped in five classes:
+
+Informational responses (100–199),
+Successful responses (200–299),
+Redirects (300–399),
+Client errors (400–499),
+and Server errors (500–599).
+
+9.What is the diff between http1.1 vs http2?
+Ans. HTTP 2.0 is a binary protocol that multiplexes numerous streams going over a single (normally TLS-encrypted) TCP connection.
+The contents of each stream are HTTP 1.1 requests and responses, just encoded and packed up differently. HTTP2 adds a number of features to manage the streams,
+ but leaves old semantics untouched.
+
+10. What's an HTTP header?
+Ans. The HTTP headers are used to pass additional information between the clients and the server through the request and response header. All the headers are case-insensitive, headers fields are separated by colon, key-value pairs in clear-text string format. The end of the header section denoted by an empty field header. There are a few header fields that can contain the comments. And a few headers can contain quality(q) key-value pairs that separated by an equal sign.
+There are four kinds of headers context-wise:
+General Header: This type of headers applied on Request and Response headers both but with out affecting the database body.
+Request Header: This type of headers contains information about the fetched request by the client.
+Response Header: This type of headers contains the location of the source that has been requested by the client.
+Entity Header: This type of headers contains the information about the body of the resources like MIME type, Content-length.
+
+11. What's the default browser method?
+Ans. GET
