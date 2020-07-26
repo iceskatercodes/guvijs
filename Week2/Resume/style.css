@@ -1,0 +1,26 @@
+
+h1{
+   text-align: center;
+    color: #ffffff;
+}
+body{
+    font-family: italic;
+    background-color: #909fcf;
+    font-style: italic;
+}
+.bold{
+font-weight: bold;
+}
+.position{
+text-align: right;
+}
+header{
+background-color: #7645d6;
+font-weight: bold;
+}
+footer{
+    text-align: center;
+    font-weight: bold;
+  background-color: #5911e9;
+color: #decdd8;
+}
