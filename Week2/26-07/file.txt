@@ -1,0 +1,77 @@
+JavaScript Primitive vs. Reference Values
+Summary: Differences between primitive and reference values.
+
+Accessing by value and reference
+In JavaScript, a variable may store two types of values: primitive and reference.
+
+JavaScript provides six primitive types as undefined, null, boolean, number, string, and symbol , and a reference type object.
+
+The size of a primitive value is fixed, therefore, JavaScript stores the primitive value on the stack.
+
+On the other hand, the size of a reference value is dynamic so JavaScript stores the reference value on the heap.
+
+When you assign a value to a variable, the JavaScript engine will determine whether the value is a primitive or reference value.
+
+If the value is a primitive value, when you access the variable, you manipulate the actual value stored in that variable. In other words, the variable that stores a primitive value is accessed by value.
+
+Unlike a primitive value, when you manipulate an object, you work on the reference of that object, rather than the actual object. It means a variable that stores an object is accessed by reference.
+
+To determine the type of a primitive value you use the typeof operator. For example:
+
+let x = 10;
+console.log(typeof(x)); // number
+And
+
+let str = 'JS';
+console.log(typeof(str)); // string
+To find the type of a reference value, you use the instanceof operator:
+
+let refType = variable instanceof constructor;
+For example, the following rgb variable is an instance of the Array object:
+
+let rgb = ['red','green','blue'];
+console.log(rgb instanceof Array); // true
+Copying primitive values
+When you assign a variable that stores a primitive value to another, the value stored in the variable is created and copied into the new variable.
+
+Let’s take a look at the following example.
+
+First, declare a variable a and initialize its value to 10.
+
+var a = 10;
+JavaScript Primitive Value Example
+Second, declare another variable b and assign it a value of the variable a. Internally, JavaScript engine copies the value stored in  a into the location of b.
+
+var b = a;
+JavaScript Primitive Value Copying
+Third, assign the variable b new value 20.
+
+b = 20;
+JavaScript Primitive Value Assigning
+Since a and b have no relationship, when you change the value stored in the b variable, the value of the a variable doesn’t change.
+
+console.log(a); // 10;
+console.log(b); // 20;
+Copying reference values
+When you assign a reference value from one variable to another, the value stored in the variable is also copied into the location of the new variable.
+
+The difference is that the values stored in both variables now are the address of the actual object stored on the heap. As a result, both variables are referencing the same object.
+
+Consider the following example.
+
+First, declare a variable x that holds an object whose name property is 'John'.
+
+var x = {name: 'John'};
+JavaScript Reference Declaration
+Second, declare another variable y and assign the x variable to y. Both x and y are now referencing the same object on the heap.
+
+var y = x;
+JavaScript Reference Assignment
+Third, modify the value stored in the name property of the object using the y variable.
+
+y.name = 'David';
+JavaScript Reference Modifying Property
+Since both x and y are referencing the same object, the change is also reflected if you access the object using the x variable.
+
+console.log(x.name); // 'David'
+JavaScript Reference Accessing Property
