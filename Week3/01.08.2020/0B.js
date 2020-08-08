@@ -9,7 +9,7 @@ var myCar = {
             atFaultForAccident: true,
         },
         {
-            date: "7/04/2022", // added one 0 in month to format like other dates in the objects
+            date: "7/4/2022", 
             damage_points: "2200",
             atFaultForAccident: true,
         },
