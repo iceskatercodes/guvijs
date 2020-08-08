@@ -24,15 +24,15 @@ var myCar = {
 
 //  Loop over the accidents array. Change atFaultForAccident from true to false.
 
-for (let i in myCar.accidents) {
-    myCar.accidents[i].atFaultForAccident = false;
+for (let car in myCar.accidents) {
+    myCar.accidents[car].atFaultForAccident = false;
 }
 
 
 //  Print the dates of my accidents
 
-for (let i in myCar.accidents) {
-    console.log(myCar.accidents[i].date);
+for (let car in myCar.accidents) {
+    console.log(myCar.accidents[car].date);
 }
 
 console.log(myCar)
