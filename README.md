@@ -1,5 +1,7 @@
 # guvijs
 simple tasks
-week 1 
+week 1(JAVASCRIPT TASKS STARTS HERE)
 week 2
 week 3
+week 4(JAVASCRIPT TASKS ENDS HERE)
+week 5(HTML TASKS STARTS HERE)
