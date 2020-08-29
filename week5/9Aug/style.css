@@ -1,0 +1,24 @@
+table td {
+    border: black solid 1px;
+    border-collapse: collapse;
+}
+header{
+    text-align: center;
+    height:40px;
+    background-color: red;
+}
+.spanColor{
+    color: red;
+    font-style: bold;
+}
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th {
+    border: none;
+}
+.randomBlue{
+    color:blue
+}
