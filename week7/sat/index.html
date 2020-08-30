@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <script>
+        var header = document.createElement("div");
+        header.setAttribute("class", "header")
+
+        var img = document.createElement("img")
+        img.src = "./images/GettyImages-917120826.jpg"
+        img.setAttribute("class", "main-image")
+        header.appendChild(img)
+
+        var line = document.createElement("div");
+        line.setAttribute("class", "line")
+        header.appendChild(line)
+
+        var container = document.createElement("div")
+        container.setAttribute("class", "container")
+        header.appendChild(container)
+
+        var icon_name = document.createElement("p")
+        icon_name.innerText = "Iceskater"
+        icon_name.setAttribute("class", "name")
+        container.appendChild(icon_name)
+
+        var text_center = document.createElement("p")
+        text_center.setAttribute("class", "textCenter")
+        text_center.innerText = "Dubai Bus Stand, Dubai Main Road, Dubai Kurukku Sandhu, Dubai."
+
+        var hr = document.createElement("hr")
+        hr.setAttribute("class", "hr")
+
+        let container1 = document.createElement("div")
+        container1.setAttribute("class", "container1")
+
+        let iconContainers = document.createElement("div")
+        iconContainers.setAttribute("class", "iconContainers")
+
+        let icons = document.createElement("div")
+        icons.setAttribute("class", "logos")
+
+        let user = document.createElement("img")
+        user.src = "./images/user.png"
+        icons.appendChild(user)
+        iconContainers.appendChild(icons)
+
+        let heading1 = document.createElement("h1")
+        heading1.innerText = "Profile"
+
+        let p1 = document.createElement("p")
+        p1.innerText =
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus facere sint minima. Magni quaerat, distinctio possimus doloremque fugit veniam molestias illo numquam velit, accusantium quos, non consequatur a ut dignissimos?"
+
+        let iconContainer2 = document.createElement("div")
+        iconContainer2.setAttribute("class", "iconContainers")
+
+        let icon_2 = document.createElement("div")
+        icon_2.setAttribute("class", "logos")
+
+        let flask = document.createElement("img")
+        flask.src = "./images/flask.png"
+        icon_2.appendChild(flask)
+        iconContainer2.appendChild(icon_2)
+
+        let heading2 = document.createElement("h1")
+        heading2.innerText = "Skills"
+
+        let technicalSkills = document.createElement("h3")
+        technicalSkills.style.textAlign = "center"
+        technicalSkills.innerText = "Technical Skills"
+
+        let skillNames = document.createElement("div")
+        skillNames.setAttribute("class", "skillNames")
+
+        let skill1 = document.createElement("h4")
+        skill1.innerText = "JavaScript"
+        let skill2 = document.createElement("h4")
+        skill2.innerText = "CSS"
+        let skill3 = document.createElement("h4")
+        skill3.innerText = "HTML"
+        let skill4 = document.createElement("h4")
+        skill4.innerText = "React"
+        let skill5 = document.createElement("h4")
+        skill5.innerText = "Python"
+        let skill6 = document.createElement("h4")
+        skill6.innerText = "Deployment"
+
+        let skillRange = document.createElement("div")
+        skillRange.setAttribute("class", "skillRange")
+
+
+        let range1 = range("js", "90")
+        let range2 = range("css", "80")
+        let range3 = range("html", "70")
+        let range4 = range("react", "60")
+        let range5 = range("python", "50")
+        let range6 = range("deploy", "60")
+
+        skillNames.append(skill1, skill2, skill3, skill4, skill5, skill6)
+        skillRange.append(range1, range2, range3, range4, range5, range6)
+
+        let additionalSkills = document.createElement("h3")
+        additionalSkills.style.textAlign = "center"
+        additionalSkills.innerText = "Additional Skills"
+
+        let aSkillNames = document.createElement("div")
+        aSkillNames.setAttribute("class", "skillNames")
+
+        let aSkill1 = document.createElement("h4")
+        aSkill1.innerText = "Project Management"
+        let aSkill2 = document.createElement("h4")
+        aSkill2.innerText = "Leadership"
+        let aSkill3 = document.createElement("h4")
+        aSkill3.innerText = "Development"
+        let aSkill4 = document.createElement("h4")
+        aSkill4.innerText = "Management"
+
+        aSkillNames.append(aSkill1, aSkill2, aSkill3, aSkill4)
+
+        let aSkillRange = document.createElement("div")
+        aSkillRange.setAttribute("class", "skillRange")
+
+        let aRange1 = range("Management", "90")
+        let aRange2 = range("Leadership", "80")
+        let aRange3 = range("Development", "70")
+        let aRange4 = range("Mangement", "80")
+
+        aSkillRange.append(aRange1, aRange2, aRange3, aRange4)
+
+
+        let iconContainer3 = document.createElement("div")
+        iconContainer3.setAttribute("class", "iconContainers")
+        iconContainer3.style.marginTop = "60px"
+
+        let icon3 = document.createElement("div")
+        icon3.setAttribute("class", "logos")
+
+        let breif = document.createElement("img")
+        breif.src = "./images/briefcase.png"
+        icon3.appendChild(breif)
+        iconContainer3.appendChild(icon3)
+
+        let heading3 = document.createElement("h1")
+        heading3.innerHTML = "Work Experience<br><br>"
+        heading3.style.marginTop = "65px"
+
+        let content1 = document.createElement("p")
+        content1.innerHTML = "<b>Software Engineer</b>"
+
+        content1.style.textAlign = "center"
+        content1.style.marginBottom = "0"
+
+        let content2 = document.createElement("p")
+        content2.innerText = "02/2018 - 05/2019"
+        content2.style.float = "right"
+
+        let content3 = document.createElement("p")
+        content3.innerText = "First Company"
+        content3.style.margin = "0"
+
+
+        let list = document.createElement("ul")
+        let ul1 = document.createElement("li")
+        ul1.innerText =
+            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi earum quis labore ipsam consequatur corrupti vitae, nostrum perferendis itaque consequuntur adipisci voluptatum! Dolores fugit enim veritatis recusandae, veniam neque quas."
+        let ul2 = document.createElement("li")
+        ul2.innerText =
+            " Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga accusantium modi consequuntur?"
+        let ul3 = document.createElement("li")
+        ul3.innerText =
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam fugit nam earum asperiores beataedoloremque! Ad laudantium quidem ipsum animi atque dolores sequi perferendis impedit, iusto deserunt excepturi."
+
+        list.append(ul1, ul2, ul3)
+        container1.append(iconContainers, heading1, p1, iconContainer2, heading2, technicalSkills, skillNames,
+            skillRange, additionalSkills, aSkillNames, aSkillRange, iconContainer3, heading3, content1, content2,
+            content3, list)
+
+        let container2 = document.createElement("div")
+        container2.setAttribute("class", "container2")
+
+        let iconContainers2 = document.createElement("div")
+        iconContainers2.setAttribute("class", "iconContainers")
+
+        let icons2 = document.createElement("div")
+        icons2.setAttribute("class", "logos")
+
+        let breif2 = document.createElement("img")
+        breif2.src = "./images/briefcase.png"
+        icons2.appendChild(breif2)
+        iconContainers2.appendChild(icons2)
+
+        let heading4 = document.createElement("h1")
+        heading4.innerHTML = "Work Experience<br><br>"
+
+        let content4 = document.createElement("p")
+        content4.innerHTML = "<b>Software Development Engineer</b>"
+        content4.style.textAlign = "center"
+        content4.style.marginBottom = "0"
+
+        let content5 = document.createElement("p")
+        content5.innerText = "05/2018 - Present"
+        content5.style.float = "right"
+
+        let content6 = document.createElement("p")
+        content6.innerText = "Oracle"
+        content6.style.margin = "0"
+
+        let list2 = document.createElement("ul")
+        let ul4 = document.createElement("li")
+        ul4.innerText =
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum incidunt unde voluptates voluptas voluptatem inventore."
+        let ul5 = document.createElement("li")
+        ul5.innerText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, modi."
+        let ul6 = document.createElement("li")
+        ul6.innerText =
+            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis molestias cumque iste nam obcaecati totam quis"
+
+        list2.append(ul4, ul5, ul6)
+
+        let iconContainers3 = document.createElement("div")
+        iconContainers3.setAttribute("class", "iconContainers")
+        iconContainers3.style.marginTop = "50px"
+
+        let icons3 = document.createElement("div")
+        icons3.setAttribute("class", "logos")
+
+        let mortar = document.createElement("img")
+        mortar.src = "./images/icons8-graduation-cap-32.png"
+        icons3.appendChild(mortar)
+        iconContainers3.appendChild(icons3)
+
+        let heading5 = document.createElement("h1")
+        heading5.innerHTML = "Education<br><br>"
+        heading5.style.marginTop = "50px"
+
+        let content7 = document.createElement("p")
+        content7.innerHTML = "<strong>MBA</strong>"
+        content7.style.textAlign = "left"
+        content7.style.display = "inline-block"
+        content7.style.marginBottom = "0"
+
+        let content8 = document.createElement("p")
+        content8.innerText = "05/2019 - Present"
+        content8.style.float = "right"
+
+        let content9 = document.createElement("p")
+        content9.innerHTML = "Lorem<br><br>"
+        content9.style.margin = "0"
+
+        let content10 = document.createElement("p")
+        content10.innerText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi necessitatibus"
+        content10.style.margin = "0"
+
+        let list3 = document.createElement("ul")
+        let ul7 = document.createElement("li")
+        ul7.innerText =
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi necessitatibus voluptatibus distinctio veniam eos officia modi excepturi "
+        let ul8 = document.createElement("li")
+        ul8.innerText =
+            "Lorem, ipsum dolor sit amet consectetur adipisicing elit."
+        let ul9 = document.createElement("li")
+        ul9.innerText =
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo iusto sint labore eius commodi fugit facere asperiores obcaecati dicta, nisi non, a magni corporis dignissimos deleniti doloremque eaque."
+
+        list3.append(ul7, ul8, ul9)
+
+        let edu = document.createElement("p")
+        edu.style.display = "inline-block"
+        edu.style.marginBottom = "0"
+        edu.innerHTML = "<strong>B.Tech</strong>"
+
+        let edu2 = document.createElement("p")
+        edu2.style.float = "right"
+        edu2.innerText = "2012-2016"
+
+        let edu3 = document.createElement("p")
+        edu3.style.margin = "0"
+        edu3.innerText = "NIT, Silchar"
+
+        container2.append(iconContainers2, heading4, content4, content5, content6, list2, iconContainers3, heading5, content7,
+            content8, content9, content10, list3, edu, edu2, edu3)
+
+        function range(name, value) {
+            let input = document.createElement("input")
+            input.setAttribute("type", "range")
+            input.setAttribute("name", name)
+            input.setAttribute("min", "1")
+            input.setAttribute("max", "100")
+            input.setAttribute("value", value)
+            input.setAttribute("value", value)
+            input.setAttribute("class", "sk")
+            input.setAttribute("id","myinput")
+            return input;
+        }
+
+        document.body.append(header, text_center, hr, container1, container2)
+    </script>
+</body>
+
+</html>
