@@ -1,0 +1,20 @@
+body {
+    width: 40%;
+    min-height: 100%;
+    margin: auto;
+}
+
+input[type="button"] {
+    background: linear-gradient(0deg, rgb(248, 146, 226) 0%, rgb(166, 236, 160) 100%);
+    color: whitesmoke;
+    width: 55px;
+    height: 65px;
+}
+
+.form_control {
+    background: linear-gradient(0deg, rgb(58, 245, 11) 0%, rgb(218, 253, 91) 100%);
+    border: 2px solid black;
+    height: 100px;
+    width: 220px;
+
+}
