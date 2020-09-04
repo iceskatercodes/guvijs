@@ -2,7 +2,7 @@ var container = document.createElement("div");
 container.setAttribute("class", "my_container")
 
 var div1 = document.createElement("div");
-div1.setAttribute("class", "row-justify-content-center ");
+div1.setAttribute("class", "row-justify-content-center py-5");
 
 var div2 = document.createElement("div");
 div2.setAttribute("class", "col-sm-6");
