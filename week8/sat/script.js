@@ -16,7 +16,6 @@ counter.style.color = "#ffffff"
 //appending content
 let text = document.createElement("h1")
 text.classList.add("heading")
-text.innerHTML = "10"
 text.style.fontSize = "50px"
 
 
