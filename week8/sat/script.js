@@ -51,7 +51,7 @@ setTimeout(() => {
                                             text.innerHTML = "0"
                                             setTimeout(() => {
                                                 text.innerHTML = "Happy Birthday to me!!!!!!!!"
-                                                text.style.fontSize = "5rem"
+                                                text.style.fontSize = "50px"
                                                 counter.classList.add("col-md-12")
                                                 counter.classList.remove("offset-md-4")
                                             }, 1000);
