@@ -12,11 +12,15 @@ let counter = document.createElement("div")
 counter.classList.add("col-md-5", "offset-md-4", "text-center", "rounded", "align-middle")
 counter.style.backgroundColor = "#332255"
 counter.style.color = "#ffffff"
+counter.style.padding = "10px"
+counter.style.marginBottom = "5px"
+
 
 //appending content
 let text = document.createElement("h1")
 text.classList.add("heading")
 text.style.fontSize = "50px"
+text.style.fontFamily = "cursive"
 
 
 /**
