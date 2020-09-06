@@ -1,21 +1,29 @@
+//container zone
 let header = document.createElement("div")
 header.classList.add("container-fluid","text-center")
 header.style.backgroundColor = "#34ebc9"
 
-
+//declaring div
 let box = document.createElement("div")
 box.classList.add("box")
 
+//declaring  inner div
 let counter = document.createElement("div")
 counter.classList.add("col-md-5", "offset-md-4", "text-center", "rounded", "align-middle")
 counter.style.backgroundColor = "#332255"
 counter.style.color = "#ffffff"
 
+//appending content
 let text = document.createElement("h1")
 text.classList.add("heading")
 text.innerHTML = "10"
 text.style.fontSize = "50px"
 
+
+/**
+ * Params" none
+ * this is to set timer for birthday
+ */
 setTimeout(() => {
     text.innerHTML = "10"
     setTimeout(() => {
