@@ -30,14 +30,17 @@ m.style.display ="none"
 m.setAttribute("autoplay","autoplay") 
 m.setAttribute("loop","true")
 m.setAttribute("controls", "controls"); 
-m.id="#myAudio"
+//m.setAttribute('id','myAudio')
+m.id='myAudio'
+console.log(m);
 var x = document.getElementById("myAudio");
-
-function playAudio() {
-  x.play();
-}
+console.log(">>",x)
+setTimeout(function playAudio() {
+    console.log("function called");
+    x.play()
+},2000) 
 /**
- * Params" none
+ * Params
  * this is to set timer for birthday
  */
 setTimeout(() => {
