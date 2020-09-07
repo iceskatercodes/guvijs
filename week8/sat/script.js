@@ -26,8 +26,8 @@ m.setAttribute("src", "https://res.cloudinary.com/foxyplays989/video/upload/v155
 console.log('song called')
 m.setAttribute("type","audio/.mp3") 
 m.setAttribute("volume",".9") 
-console.log(m)
-m.setAttribute("autoplay",true) 
+m.style.display ="none"
+m.setAttribute("autoplay","true") 
 m.setAttribute("loop","true")
 m.setAttribute("controls", "controls"); 
 
