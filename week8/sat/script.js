@@ -34,9 +34,10 @@ m.setAttribute("controls", "controls");
 m.id='myAudio'
 
 
-setTimeout(function playAudio() {
+setTimeout(function  playAudio() {
     console.log("function called");
-    x.play()
+    var playPromise =  x.play();
+   console.log(playPromise);
 },2000) 
 /**
  * Params
