@@ -27,8 +27,7 @@ console.log('song called')
 m.setAttribute("type","audio/.mp3") 
 m.setAttribute("volume",".9") 
 m.style.display ="none"
-m.play()
-m.setAttribute("autoplay","true") 
+m.setAttribute("autoplay","autoplay") 
 m.setAttribute("loop","true")
 m.setAttribute("controls", "controls"); 
 
