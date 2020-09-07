@@ -1,6 +1,6 @@
 //container zone
 let header = document.createElement("div")
-header.classList.add("container-fluid", "text-center")
+header.classList.add("container-fluid","text-center")
 header.style.backgroundColor = "#34ebc9"
 
 //declaring div
@@ -21,23 +21,24 @@ let text = document.createElement("h1")
 text.classList.add("heading")
 text.style.fontSize = "50px"
 text.style.fontFamily = "cursive"
-var m = document.createElement("audio");
+var m = document.createElement("audio"); 
 m.setAttribute("src", "https://res.cloudinary.com/foxyplays989/video/upload/v1558369838/LetsGo.mp3");
 console.log('song called')
-m.setAttribute("type", "audio/.mp3")
-m.setAttribute("volume", ".9")
-m.style.display = "none"
-m.setAttribute("autoplay", "autoplay")
-m.setAttribute("loop", "true")
-m.setAttribute("controls", "controls");
+m.setAttribute("type","audio/.mp3") 
+m.setAttribute("volume",".9") 
+m.style.display ="none"
+m.setAttribute("autoplay","autoplay") 
+m.setAttribute("loop","true")
+m.setAttribute("controls", "controls"); 
 //m.setAttribute('id','myAudio')
-m.id = 'myAudio'
+m.id='myAudio'
 console.log(m);
 var x = document.getElementById("myAudio");
-playAudio = () => {
+console.log("",x)
+setTimeout(function playAudio() {
     console.log("function called");
     x.play()
-}
+},2000) 
 /**
  * Params
  * this is to set timer for birthday
@@ -71,7 +72,7 @@ setTimeout(() => {
                                                 counter.classList.remove("offset-md-4")
                                             }, 1000);
                                         }, 1000);
-                                    }, 1000);
+                                    }, 1000);    
                                 }, 1000
                                 );
                             }, 1000);
