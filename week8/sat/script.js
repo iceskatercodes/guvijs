@@ -30,7 +30,12 @@ m.style.display ="none"
 m.setAttribute("autoplay","autoplay") 
 m.setAttribute("loop","true")
 m.setAttribute("controls", "controls"); 
+m.id="#myAudio"
+var x = document.getElementById("myAudio");
 
+function playAudio() {
+  x.play();
+}
 /**
  * Params" none
  * this is to set timer for birthday
