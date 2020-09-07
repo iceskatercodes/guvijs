@@ -33,8 +33,7 @@ m.setAttribute("controls", "controls");
 //m.setAttribute('id','myAudio')
 m.id='myAudio'
 console.log(m);
-var x = document.getElementById("myAudio");
-console.log("",x)
+
 setTimeout(function playAudio() {
     console.log("function called");
     x.play()
@@ -89,5 +88,6 @@ box.appendChild(counter)
 header.appendChild(box)
 header.appendChild(m)
 
-
 document.body.append(header)
+var x = document.getElementById("myAudio");
+console.log(">>><<<",x)
