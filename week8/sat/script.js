@@ -32,7 +32,7 @@ m.setAttribute("loop","true")
 m.setAttribute("controls", "controls"); 
 //m.setAttribute('id','myAudio')
 m.id='myAudio'
-console.log(m);
+
 
 setTimeout(function playAudio() {
     console.log("function called");
@@ -90,4 +90,4 @@ header.appendChild(m)
 
 document.body.append(header)
 var x = document.getElementById("myAudio");
-console.log(">>><<<",x)
+console.log(">>>>>>>>",x+'<<<<<<<<')
