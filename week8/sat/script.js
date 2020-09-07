@@ -24,16 +24,8 @@ text.style.fontFamily = "cursive"
 var m = document.createElement("audio"); 
 m.setAttribute("src", "hbd.mp3");
 m.setAttribute("autoplay","true") 
-
-
-// m.autoplay = true
-//   if (m.canPlayType("audio/mp3")) { 
-//       m.setAttribute("src", "Happy Birthday English 2.mp3"); 
-//   } else { 
-//       m.setAttribute("src", "Happy Birthday English 2.mp3"); 
-//   } 
- 
-  m.setAttribute("controls", "controls"); 
+m.setAttribute("loop","true")
+m.setAttribute("controls", "controls"); 
 
 /**
  * Params" none
