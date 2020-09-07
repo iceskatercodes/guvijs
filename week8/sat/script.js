@@ -23,7 +23,8 @@ text.style.fontSize = "50px"
 text.style.fontFamily = "cursive"
 var m = document.createElement("audio"); 
 m.setAttribute("src", "https://res.cloudinary.com/foxyplays989/video/upload/v1558369838/LetsGo.mp3");
-m.setAttribute("type","audio/mp3") 
+console.log('song called')
+m.setAttribute("type","audio/.mp3") 
 m.setAttribute("autoplay","true") 
 m.setAttribute("loop","true")
 m.setAttribute("controls", "controls"); 
