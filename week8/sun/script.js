@@ -1,157 +1,113 @@
-async function countryData(){
-    try{
-        let url = "https://restcountries.eu/rest/v2/all";
-        let response = await fetch(url);
-        return response.json();
-    }catch(error){
-        console.error(error);
-    }
-}
-countryData();
-
-async function weatherData(item){
-
-    let api_key = "da17c131445c45630bc0602185c70ae0";
-    let ow_link = "https://api.openweathermap.org/data/2.5/weather?";
-
-    try{
-        let latlon = await countryData()
-        latlon = latlon[item].latlng
-        let lat = latlon[0]
-        let lon = latlon[1]
-        url = `${ow_link}lat=${lat}&lon=${lon}&appid=${api_key}`;
-        let response = await fetch(url);
-        return response.json();
-    }catch(error){
-        console.error(error);
-    }
-}
-
-
-//header
-document.body.style.backgroundColor = "#fab"
-
-let container = document.createElement("div")
-container.classList.add("container")
-
-let row = document.createElement("div")
-row.classList.add("row")
-
-let top_col = document.createElement("div")
-top_col.classList.add("col-4")
-top_col.style.textAlign = "center"
-
-
-let top_head = document.createElement("p")
-top_head.innerText = "Countries & Weather"
-top_head.style.color = "white"
-top_col.append(top_head)
-row.appendChild(top_col)
-
-async function createCards(id){
-    
-    let content = await countryData()
-    let flag = content[id].flag
-    let name = content[id].name
-    let capital = content[id].capital
-    let region = content[id].region
-    let latitude = content[id].latlng[0]
-    let longitude = content[id].latlng[1]
-    let c_code = content[id].alpha3Code
-
-    let col = document.createElement("div")
-    col.classList.add("col-lg-4", "col-xs-4")
-    
-    let cards = document.createElement("div")
-    cards.classList.add("card-flex", "border", "mt-3", "mb-3")
-    cards.style.borderRadius = "6px"
-    cards.style.textAlign = "center"
-    
-    let cardhead = document.createElement("div")
-    cardhead.classList.add("card-header")
-    cardhead.style.backgroundColor = "#ccddee"
-    cardhead.style.color = "black"
-    cardhead.innerText = name
-    
-    let cardbody = document.createElement("div")
-    cardbody.classList.add("card-body")
-    cardbody.style.backgroundImage = "linear-gradient(to left, #3F5151 , #DAC8A2)"
-    
-    let flag_image = document.createElement("img")
-    flag_image.src = flag
-    flag_image.classList.add("img")
-    flag_image.style.height = "200px"
-    flag_image.style.maxWidth = "100%"
-
-    let details = document.createElement("div")
-    details.classList.add("mt-3")
-    details.style.color = "#FFF"
-    details.innerHTML = `Capital : ${capital}<br>`
-    details.innerHTML += `Region : ${region}<br>`
-    details.innerHTML += `Country code : ${c_code}<br>`
-    details.innerHTML += `Latitude : ${latitude}<br>`
-    details.innerHTML += `Longitude : ${longitude}<br>`
-
-    let button = document.createElement("button")
-    button.classList.add("btn", "btn-outline-light", "mt-2")
-    button.onclick = async function() {
-        let w_data = await weatherData(id)
-        let main = w_data.weather[0].main
-        let desc = w_data.weather[0].description
-        let iconcode = w_data.weather[0].icon
-        let iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-        let base = w_data.base
-        let temp = w_data.main.temp
-        let w_speed = w_data.wind.speed
-        
-        let alert = document.createElement("div")
-        alert.classList.add("alert", "alert-success", "mt-3")
-        alert.setAttribute("role", "alert")
-        
-        let head = document.createElement("h3")
-        head.innerHTML = "Weather Details"
-
-        let image = document.createElement("img")
-        image.src = iconurl
-
-        let lis = document.createElement("p")
-        lis.innerHTML += main
-        lis.innerHTML += `<br>Status : ${desc}<br>`
-        lis.innerHTML += `Base : ${base}<br>`
-        lis.innerHTML += `Temprature : ${temp}&deg;F<br>`
-        lis.innerHTML += `Wind Speed : ${w_speed}<br>`
-
-        let but = document.createElement("button")
-        but.classList.add("btn", "btn-outline-secondary")
-        but.innerText = "Go Back"
-        but.onclick = function() {
-            cardbody.removeChild(alert)
-            cardbody.append(flag_image, details)
-        }
-
-        alert.append(head, image, lis, but)
-        cardbody.removeChild(details)
-        cardbody.removeChild(flag_image)
-        cardbody.appendChild(alert)
-    }
-    button.innerText = "Click for weather"
-    details.appendChild(button)
-
-    cardbody.append(flag_image, details)
-    
-    cards.append(cardhead, cardbody)
-    col.append(cards)
-    row.append(col)
-}
-
-async function getCards(){
-
-    for(let i = 0; i < 250; i++){
-        await createCards(i)
-    }
-}
-
-getCards()
-
-container.appendChild(row)
+let container = document.createElement("div");
+container.classList.add("row");
+container.classList.add("container-fluid");
+let heading = document.createElement("div");
+heading.classList.add("col", "col-lg-12", "col-sm-12", "col-md-12", "header")
+container.append(heading)
+let content = document.createElement("h1");
+content.innerText = "Global weather Report "
+heading.append(content)
 document.body.append(container)
+
+
+
+//all functions
+fetch("https://restcountries.eu/rest/v2/all")
+    .then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        country(data)
+    }).catch(function (err) { console.error(err) })
+
+function country(data) {
+    for (i = 0; i < data.length; i++) {
+        displayData(data[i]);
+    }
+}
+
+
+//weather data
+async function getWeather(countryData, card, header, body, image) {
+    let key = "da17c131445c45630bc0602185c70ae0";
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${countryData.capital?countryData.capital:"Ushuaia"}&appid=${key}`;
+    fetch(url)
+        .then((resp) => {
+            return resp.json()
+        }).then((data) => {
+            showWeather(data, card, header, body, image)
+        }).catch((err) => {
+            console.error(err);
+        })
+}
+
+//appending data
+function displayData(data) {
+    let col = document.createElement("div");
+    col.classList.add("col-xl-3");
+    col.classList.add("col-md-12");
+    col.classList.add("col-xl-3")
+    let card = document.createElement("div");
+    card.classList.add("cList", "card", "card-flex", "border", "mb-3")
+    let header = document.createElement("div");
+    header.classList.add("card-header", "hList");
+    header.innerText = data.name;
+    let img = document.createElement("img")
+    img.classList.add("image", "mt-3", "mb-3");
+    img.classList.add("card-img-top")
+    let body = document.createElement("div");
+    body.classList.add("card-body", "bodyList");
+    img.setAttribute("src", data.flag);
+    let capital = document.createElement("p");
+    capital.innerText = "Capital : " + data.capital;
+    let region = document.createElement("p");
+    region.innerText = "Region : " + data.region;
+    let timezone = document.createElement("p");
+    timezone.innerText = "TimeZone : " + data.timezones[0];
+   
+    let button = document.createElement("button");
+    button.classList.add("btn-info", "mt-3", "mb-1")
+    button.innerText = "Weather report"
+
+    button.addEventListener("click", function () {
+        getWeather(data, card, header, body, img);
+    });
+
+    body.append(capital, region, timezone, button)
+    card.append(header, img, body)
+    col.append(card)
+
+    container.append(col);
+}
+
+//weather Data
+async function showWeather(data, card, header, body, image) {
+    card.removeChild(body);
+    card.removeChild(header);
+    card.removeChild(image);
+    let newHeader = document.createElement("div");
+    newHeader.classList.add("card-header", "hList");
+    newHeader.innerText = "Today"
+    let newBody = document.createElement("div");
+    newBody.classList.add("card-body", "bodyList");
+    let img = document.createElement("img");
+    let url = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+    img.setAttribute("src", url)
+    let status = document.createElement("p");
+    status.innerText = `Status : ${data.weather[0].main}(${data.weather[0].description})`;
+    let temp = document.createElement("p");
+    temp.innerText = `Temperature : ${(data.main.temp - 273.15).toFixed(2)} \xB0c`;
+    let humidity = document.createElement("p");
+    humidity.innerText = `Humidity : ${data.main.humidity}%`;
+   
+    let button = document.createElement("button");
+    button.classList.add("btn-primary", "mt-2");
+    button.innerText = "Return";
+    button.addEventListener("click", function () {
+        card.removeChild(newBody),
+            card.removeChild(newHeader);
+        card.append(header, image, body);
+    })
+    newBody.append(img, status, temp, humidity, button);
+    card.append(newHeader, image, newBody);
+}
+
