@@ -1,0 +1,64 @@
+body {
+    background-color: rgb(231, 222, 222);
+    font-family: cursive;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    margin: auto;
+    text-align: center;
+}
+
+th {
+    background-color: rgb(148, 253, 248);
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+.nativeName {
+    width: 300px;
+}
+
+.countryName {
+    width: 300px;
+}
+
+.capital {
+    width: 300px;
+}
+
+.population {
+    width: 300px;
+}
+
+.headding {
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 50px;
+
+}
+
+.headding a {
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 0.5px solid grey;
+    border-radius: 4px;
+    margin-left: 4px;
+    color: #337ABC;
+    margin-bottom: 10px;
+}
+
+.headding .active {
+    background-color: #337ABC;
+    color: white;
+}
