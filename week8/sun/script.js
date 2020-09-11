@@ -82,7 +82,6 @@ function displayData(data) {
 async function weatherData(countryData, card, header, body, image) {
     let key = "da17c131445c45630bc0602185c70ae0";
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${countryData.capital?countryData.capital:"Ushuaia"}&appid=${key}`;
-    console.log(url)
     fetch(url)
         .then((resp) => {
             return resp.json()
