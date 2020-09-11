@@ -12,6 +12,8 @@ document.body.append(container)
 
 
 //all functions
+
+//country data
 fetch("https://restcountries.eu/rest/v2/all")
     .then(function (response) {
         return response.json();
@@ -25,22 +27,7 @@ function country(data) {
     }
 }
 
-
-//weather data
-async function getWeather(countryData, card, header, body, image) {
-    let key = "da17c131445c45630bc0602185c70ae0";
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${countryData.capital?countryData.capital:"Ushuaia"}&appid=${key}`;
-    fetch(url)
-        .then((resp) => {
-            return resp.json()
-        }).then((data) => {
-            showWeather(data, card, header, body, image)
-        }).catch((err) => {
-            console.error(err);
-        })
-}
-
-//appending data
+//country Data  append
 function displayData(data) {
     let col = document.createElement("div");
     col.classList.add("col-xl-3");
@@ -57,30 +44,56 @@ function displayData(data) {
     let body = document.createElement("div");
     body.classList.add("card-body", "bodyList");
     img.setAttribute("src", data.flag);
+    let nativeName = document.createElement("p");
+    nativeName.innerText = "Native Name : " + data.nativeName;
+    let shortName = document.createElement("p");
+    shortName.innerText = "Short Name : " + data.alpha2Code;
+    let languages = document.createElement("p");
+    languages.innerText = "Native Language : " + data.languages[0].name;
     let capital = document.createElement("p");
     capital.innerText = "Capital : " + data.capital;
     let region = document.createElement("p");
     region.innerText = "Region : " + data.region;
     let timezone = document.createElement("p");
-    timezone.innerText = "TimeZone : " + data.timezones[0];
+    timezone.innerText = "Time Zone : " + data.timezones[0];
+    let curencyCode = document.createElement("p");
+    curencyCode.innerText = "Currency Code : " + data.currencies[0].curencyCode;
+    let curencyName = document.createElement("p");
+    curencyName.innerText = "Currency Name : " + data.currencies[0].name;
+    let curencySymbol = document.createElement("p");
+    curencySymbol.innerText = "Currency Symbol : " + data.currencies[0].symbol;
    
     let button = document.createElement("button");
     button.classList.add("btn-info", "mt-3", "mb-1")
     button.innerText = "Weather report"
 
     button.addEventListener("click", function () {
-        getWeather(data, card, header, body, img);
+        weatherData(data, card, header, body, img);
     });
 
-    body.append(capital, region, timezone, button)
+    body.append(nativeName, languages, shortName, capital, region, timezone, curencyCode, curencyName, curencySymbol, button)
     card.append(header, img, body)
     col.append(card)
 
     container.append(col);
 }
 
-//weather Data
-async function showWeather(data, card, header, body, image) {
+//weather data
+async function weatherData(countryData, card, header, body, image) {
+    let key = "da17c131445c45630bc0602185c70ae0";
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${countryData.capital?countryData.capital:"Ushuaia"}&appid=${key}`;
+    console.log(url)
+    fetch(url)
+        .then((resp) => {
+            return resp.json()
+        }).then((data) => {
+            displayWeather(data, card, header, body, image)
+        }).catch((err) => {
+            console.error(err);
+        })
+}
+//weather Data append
+async function displayWeather(data, card, header, body, image) {
     card.removeChild(body);
     card.removeChild(header);
     card.removeChild(image);
@@ -93,11 +106,21 @@ async function showWeather(data, card, header, body, image) {
     let url = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
     img.setAttribute("src", url)
     let status = document.createElement("p");
-    status.innerText = `Status : ${data.weather[0].main}(${data.weather[0].description})`;
+    status.innerText = `Description : ${data.weather[0].main}(${data.weather[0].description})`;
     let temp = document.createElement("p");
-    temp.innerText = `Temperature : ${(data.main.temp - 273.15).toFixed(2)} \xB0c`;
+    temp.innerText = `Temperature : ${((data.main.temp - 273)).toFixed(1)} \xB0C`;
     let humidity = document.createElement("p");
     humidity.innerText = `Humidity : ${data.main.humidity}%`;
+    let tempFeelsLike = document.createElement("p");
+    tempFeelsLike.innerText = `Feels Like : ${(data.main.feels_like- 273).toFixed(1)} \xB0C`;
+    let tempMin = document.createElement("p");
+    tempMin.innerText = `Temperature Min. : ${(data.main.temp_min -273).toFixed(1)} \xB0C`;
+    let tempMax = document.createElement("p");
+    tempMax.innerText = `Temprature Max : ${(data.main.temp_max - 273).toFixed(1)} \xB0C`;
+    let sunRise = document.createElement("p");
+    sunRise.innerText = `Sun Rise : ${data.sys.sunrise }`;
+    let sunSet = document.createElement("p");
+    sunSet.innerText = `Sun Set : ${data.sys.sunset} `;
    
     let button = document.createElement("button");
     button.classList.add("btn-primary", "mt-2");
@@ -107,7 +130,7 @@ async function showWeather(data, card, header, body, image) {
             card.removeChild(newHeader);
         card.append(header, image, body);
     })
-    newBody.append(img, status, temp, humidity, button);
+    newBody.append(img, status, temp, humidity, tempFeelsLike, tempMin, tempMax,sunRise,sunSet,  button);
     card.append(newHeader, image, newBody);
 }
 
