@@ -1,5 +1,5 @@
 import { data } from './data.js';
-let dat = { "data": data }
+let countries = { "data": data }
 
 //container
 var container = document.createElement("div")
@@ -16,19 +16,27 @@ table.classList.add("tab")
 let th1 = document.createElement("th")
 let th2 = document.createElement("th")
 let th3 = document.createElement("th")
+let th4 = document.createElement("th")
+let th5 = document.createElement("th")
 var head = document.createElement("tr")
-let idhead = document.createElement("p")
-idhead.innerHTML = "Native Name"
-let namehead = document.createElement("p")
-namehead.innerHTML = "Country Name"
-let mailhead = document.createElement("p")
-mailhead.innerHTML = "Capital"
+let nName = document.createElement("p")
+nName.innerHTML = "Native Name"
+let cName = document.createElement("p")
+cName.innerHTML = "Country Name"
+let capital = document.createElement("p")
+capital.innerHTML = "Capital"
+let population = document.createElement("p")
+population.innerHTML = "Population"
+let timezone = document.createElement("p")
+timezone.innerHTML = "Timezone"
 
 
-th1.append(idhead)
-th2.append(namehead)
-th3.append(mailhead)
-head.append(th1, th2, th3)
+th1.append(nName)
+th2.append(cName)
+th3.append(capital)
+th4.append(population)
+th5.append(timezone)
+head.append(th1, th2, th3, th4,th5)
 
 
 
@@ -36,7 +44,7 @@ head.append(th1, th2, th3)
 let heading = document.createElement("h1")
 heading.innerHTML = "PAGINATION"
 var current_page = 1;
-var p_count = 10;
+var pCount = 20;
 
 
 
@@ -48,9 +56,9 @@ pager.append(prev)
 
 
 //pagination stuff
-let page_count = dat.data.length / p_count
+let pageCount = countries.data.length / pCount
 
-for (let i = 0; i < page_count; i++) {
+for (let i = 0; i < pageCount; i++) {
     let num = document.createElement("a")
     num.innerHTML = `${i + 1}`
     if (i == 0) {
@@ -86,6 +94,7 @@ function items(obj, count, page) {
         var td2 = document.createElement("td")
         var td3 = document.createElement("td")
         var td4 = document.createElement("td")
+        var td5 = document.createElement("td")
 
         let nativeName = document.createElement("div")
         nativeName.classList.add("nativeName")
@@ -105,11 +114,24 @@ function items(obj, count, page) {
         mail.innerHTML = obj.data[i].capital
         Capital.append(mail)
         
+        let population = document.createElement('div')
+        population.classList.add("population")
+        let pop = document.createElement("p")
+        pop.innerHTML = obj.data[i].population
+        population.append(pop)
+
+        let timeZone = document.createElement('div')
+        timeZone.classList.add("timezone")
+        let tz = document.createElement("p")
+        tz.innerHTML = obj.data[i].timezones[0]
+        timeZone.append(tz)
 
         td1.append(nativeName)
         td2.append(countryName)
         td3.append(Capital)
-        tr.append(td1, td2, td3)
+        td4.append(population)
+        td5.append(timeZone)
+        tr.append(td1, td2, td3, td4, td5)
         table.append(tr)
     }
 
@@ -137,5 +159,5 @@ function pageNum(page, sam) {
         cp.classList.add("active")
     }
     table.innerHTML = ""
-    items(dat, p_count, current_page)
+    items(countries, pCount, current_page)
 }

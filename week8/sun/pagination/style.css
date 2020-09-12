@@ -25,19 +25,23 @@ th {
 }
 
 .nativeName {
-    width: 300px;
+    width: 200px;
 }
 
 .countryName {
-    width: 300px;
+    width: 200px;
 }
 
 .capital {
-    width: 300px;
+    width: 200px;
 }
 
 .population {
-    width: 300px;
+    width: 200px;
+}
+
+.timezone{
+    width: 200px;
 }
 
 .headding {
