@@ -1,4 +1,4 @@
-var data =[
+var country =[
     {
       "name": "Afghanistan",
       "topLevelDomain": [
@@ -19841,4 +19841,4 @@ var data =[
     }
 ]
 
-export {data}
+export {country}

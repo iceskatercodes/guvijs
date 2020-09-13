@@ -1,5 +1,5 @@
-import { data } from './data.js';
-let countries = { "data": data }
+import { country } from './data.js';
+let countries = { "data": country }
 
 //container
 var container = document.createElement("div")
@@ -24,11 +24,11 @@ nName.innerHTML = "Native Name"
 let cName = document.createElement("p")
 cName.innerHTML = "Country Name"
 let capital = document.createElement("p")
-capital.innerHTML = "Capital"
+capital.innerHTML = "Population"
 let population = document.createElement("p")
-population.innerHTML = "Population"
+population.innerHTML = "Country flag"
 let timezone = document.createElement("p")
-timezone.innerHTML = "Timezone"
+timezone.innerHTML = "Lat Long"
 
 
 th1.append(nName)
@@ -109,27 +109,27 @@ function items(obj, count, page) {
         countryName.append(name)
 
         let Capital = document.createElement('div')
-        Capital.classList.add("capital")
+        Capital.classList.add("cCode")
         let mail = document.createElement("p")
-        mail.innerHTML = obj.data[i].capital
+        mail.innerHTML = parseInt(obj.data[i].population)
         Capital.append(mail)
         
-        let population = document.createElement('div')
-        population.classList.add("population")
-        let pop = document.createElement("p")
-        pop.innerHTML = obj.data[i].population
-        population.append(pop)
+        let flag = document.createElement('div')
+        flag.classList.add("flag")
+        let pop = document.createElement("img")
+        pop.setAttribute("src", obj.data[i].flag);
+        flag.append(pop)
 
         let timeZone = document.createElement('div')
         timeZone.classList.add("timezone")
         let tz = document.createElement("p")
-        tz.innerHTML = obj.data[i].timezones[0]
+        tz.innerHTML = obj.data[i].latlng.toString()
         timeZone.append(tz)
 
         td1.append(nativeName)
         td2.append(countryName)
         td3.append(Capital)
-        td4.append(population)
+        td4.append(flag)
         td5.append(timeZone)
         tr.append(td1, td2, td3, td4, td5)
         table.append(tr)
