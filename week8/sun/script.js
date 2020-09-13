@@ -1,6 +1,6 @@
 let container = document.createElement("div");
 container.classList.add("row");
-container.classList.add("container-fluid");
+container.classList.add("container");
 let heading = document.createElement("div");
 heading.classList.add("col", "col-lg-12", "col-sm-12", "col-md-12", "header")
 container.append(heading)
@@ -81,7 +81,8 @@ function displayData(data) {
 //weather data
 async function weatherData(countryData, card, header, body, image) {
     let key = "da17c131445c45630bc0602185c70ae0";
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${countryData.capital?countryData.capital:"Ushuaia"}&appid=${key}`;
+    console.log(countryData.latlng[0],countryData.latlng[1])
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${countryData.latlng[0]}&lon=${countryData.latlng[1]}&appid=${key}`;
     fetch(url)
         .then((resp) => {
             return resp.json()
