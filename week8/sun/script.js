@@ -1,6 +1,6 @@
 let container = document.createElement("div");
 container.classList.add("row");
-container.classList.add("container");
+container.classList.add("container-fluid");
 let heading = document.createElement("div");
 heading.classList.add("col", "col-lg-12", "col-sm-12", "col-md-12", "header")
 container.append(heading)
