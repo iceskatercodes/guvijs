@@ -57,7 +57,7 @@ function displayData(data) {
     let timezone = document.createElement("p");
     timezone.innerText = "Time Zone : " + data.timezones[0];
     let curencyCode = document.createElement("p");
-    curencyCode.innerText = "Currency Code : " + data.currencies[0].curencyCode;
+    curencyCode.innerText = "Currency Code : " + data.currencies[0].code;
     let curencyName = document.createElement("p");
     curencyName.innerText = "Currency Name : " + data.currencies[0].name;
     let curencySymbol = document.createElement("p");
