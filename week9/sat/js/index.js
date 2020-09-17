@@ -12,5 +12,10 @@ div3.innerHTML = "Play";
 div1.append(div3);
 var div5 = document.createElement("br");
 div1.append(div5)
-
+var div4 = document.createElement("button");
+div4.setAttribute("class", "btn  custom");
+div4.setAttribute("id", "highscores");
+div4.setAttribute("onclick", "document.location='highscore.html'");
+div4.innerHTML = "Highscores";
+div1.append(div4);
 
