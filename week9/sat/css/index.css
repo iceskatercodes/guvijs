@@ -1,0 +1,28 @@
+body {
+    background-color: aquamarine;
+    font-family: cursive;
+}
+
+.container {
+    width: 550px;
+    height: 400px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.btn {
+    margin: 10px;
+    padding: 3px;
+    background-color: #a5ccca;
+
+}
+
+.custom {
+    width: 200px !important;
+
+}
+
+h3 {
+    color: rgb(164, 77, 190);
+    margin-top: 100px;
+}

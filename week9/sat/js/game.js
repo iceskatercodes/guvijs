@@ -1,0 +1,76 @@
+var div1 = document.createElement("div");
+div1.setAttribute("class", "container");
+document.body.append(div1);
+
+var div2 = document.createElement("div2");
+var div2_1 = document.createElement("span");
+div2_1.setAttribute("id", "progressText");
+div2_1.innerHTML = "Question :";
+div2.append(div2_1);
+var div3 = document.createElement("span");
+div3.setAttribute("id", "qcount");
+div2.append(div3);
+var div4 = document.createElement("span");
+div4.setAttribute("id", "question-bar");
+div2.append(div4);
+var div4_1 = document.createElement("span");
+div4_1.setAttribute("id", "score1");
+div4_1.innerHTML = "Score";
+div2.append(div4_1);
+div1.append(div2);
+
+
+var div5 = document.createElement("div");
+div1.append(div5);
+var div6 = document.createElement("progress");
+div6.setAttribute("id", "myProgress");
+div6.setAttribute("max", "100");
+div6.setAttribute("value", "10");
+div5.append(div6);
+var div7 = document.createElement("span");
+div7.setAttribute("id", "score");
+div5.append(div7);
+
+var div8 = document.createElement("div");
+div8.setAttribute("id", "question");
+div1.append(div8);
+var div9 = document.createElement("br");
+div1.append(div9);
+var div10 = document.createElement("ol");
+div10.setAttribute("class", "choice-text");
+div1.append(div10);
+
+var div10_1 = document.createElement("ol");
+var div10_11 = document.createElement("button");
+div10_11.setAttribute("class", "btn  custom");
+div10_11.setAttribute("id", "option1");
+div10_11.setAttribute("type", "button");
+div10_11.setAttribute("onclick", "answer(event)");
+div10_1.append(div10_11);
+div10.append(div10_1);
+var div10_2 = document.createElement("ol");
+var div10_21 = document.createElement("button");
+div10_21.setAttribute("class", "btn  custom");
+div10_21.setAttribute("id", "option2");
+div10_21.setAttribute("type", "button");
+div10_21.setAttribute("onclick", "answer(event)");
+div10_2.append(div10_21);
+div10.append(div10_2);
+var div10_3 = document.createElement("ol");
+var div10_31 = document.createElement("button");
+div10_31.setAttribute("class", "btn  custom");
+div10_31.setAttribute("id", "option3");
+div10_31.setAttribute("type", "button");
+div10_31.setAttribute("onclick", "answer(event)");
+div10_3.append(div10_31);
+div10.append(div10_3);
+div10.append(div10_3);
+var div10_4 = document.createElement("ol");
+var div10_41 = document.createElement("button");
+div10_41.setAttribute("class", "btn  custom");
+div10_41.setAttribute("id", "option4");
+div10_41.setAttribute("type", "button");
+div10_41.setAttribute("onclick", "answer(event)");
+div10_4.append(div10_41);
+div10.append(div10_4);
+

@@ -1,0 +1,38 @@
+body {
+    background-color: aquamarine;
+    font-family: cursive;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+ol {
+    list-style-type: upper-alpha;
+
+}
+
+#score,
+#score1 {
+    float: right;
+}
+
+ol {
+    display: block;
+    border: 5px solid rgb(233, 134, 200);
+    background-color: rgb(187, 214, 199);
+    margin: 10px;
+    padding: 10px;
+}
+
+button {
+    margin: 5px;
+    padding: 3px;
+    background-color: rgb(238, 133, 63);
+    border: 0;
+}
+
+.custom {
+    width: 1000px !important;
+    color: "white";
+}
