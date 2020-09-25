@@ -1,162 +1,125 @@
-type pets = "Dog" | "Cat" | "Parrot" | "Fish" | "Turtle" | "Rabbit";
-type gender = "Male" | "Female";
-
-interface petDetails{
-    type: pets;
-    name: string;
-    age: number;
-    gender: gender;
-    color: string;
-    owners?: number;
+interface petShopData{
+    petType: string;
+    petAge: number;
+    petColor: string;
+    petGender: string;
+    
 }
 
-class PetAvailability{
-    id: number;
-    count: number;
-    petData: object;
-    data: Array<any> = [];
+class Availability{
+    petsData: Array<petShopData>
+    typeOfPets: Array<string>
 
     constructor(){
-        this.id = 0;
-        this.petData = {
-            "Dog":0,
-            "Cat":0,
-            "Parrot":0,
-            "Fish":0,
-            "Turtle":0,
-            "Rabbit":0
-        }
+        this.petsData = []
+        this.typeOfPets = []
     }
 
-    idMan(){
-        return this.id + 1;
-    }
-
-    insert(data : petDetails){
-        this.id = this.idMan();
-        this.petData[data.type] += 1;
-        data["id"] = this.id;
-        data["owners"] = data.owners || 0;
-        this.data.push(data)
-    }
-
-    availability(type: string, count: number){
-
-        let availCount = this.petData[type];
-        return availCount;
-    }
-
-    petCounts(){
-        return this.petData;
-    }
-
-    petDetails(id?: number){
-        return this.data.filter((x) => x.id == id)[0];
-    }
-
-    deletePet(id?: number){
-        let obj = this.petDetails(id - 1)
-        this.petData[obj.type] -= 1;
-        this.data.splice(id-1, 1)
-        for (let i = id-1; i < this.data.length; i++){
-            this.data[i].id -= 1;
-        }
-    }
-}
-
-
-
-
-class PetRequest extends PetAvailability{
-    requestId: Number;
-    enquiry: Array<any> = [];
-    enquiryList: Array<any> = [];
-    enquiryBool: Array<any> = [];
-    finalData: object;
-    tempData: object;
-
-    insert(...arr: Array<any>){
-        this.enquiry = [...arr];
-        this.enquiryList.push(this.enquiry);
-    }
-
-    fiveStatus(){
-        this.tempData = JSON.parse(JSON.stringify(avObject.petCounts()));
-        this.enquiryBool = [];
-        let index = Math.min(5, this.enquiryList.length)
-        for (let i = 0; i < index; i++){
-            for (let j = 0; j < this.enquiryList[i].length; j++){
-                if(!(this.enquiryList[i][j] in this.tempData)){
-                    this.enquiryBool[i] = false;
-                    break;
-                }
-                if(this.tempData[this.enquiryList[i][j]] != 0){
-                    this.tempData[this.enquiryList[i][j]] -= 1;
-                }else{
-                    for(let k = 0; k < j; k++){
-                        this.tempData[this.enquiryList[i][k]] += 1;
-                    }
-                    this.enquiryBool[i] = false;
-                    break;
-                }
-                this.enquiryBool[i] = true;
+    insertPets(petsInfo: petShopData){
+        this.petsData.push(petsInfo) 
+        let available = false;  
+        for(let petType in this.typeOfPets){
+            if (petsInfo.petType === this.typeOfPets[petType]){
+                available = true;
             }
-
         }
-        return this.enquiryBool;
-    }
-
-    allStatus(){
-        this.tempData = JSON.parse(JSON.stringify(avObject.petCounts()));
-        for (let i = 0; i < this.enquiryList.length; i++){
-            for (let j = 0; j < this.enquiryList[i].length; j++){
-                if(!(this.enquiryList[i][j] in this.tempData)){
-                    this.enquiryBool[i] = false;
-                    break;
-                }
-                if(this.tempData[this.enquiryList[i][j]] != 0){
-                    this.tempData[this.enquiryList[i][j]] -= 1;
-                }else{
-                    for(let k = 0; k < j; k++){
-                        this.tempData[this.enquiryList[i][k]] += 1;
-                    }
-                    this.enquiryBool[i] = false;
-                    break;
-                }
-                this.enquiryBool[i] = true;
-            }
-
+        if (!available){
+            this.typeOfPets.push(petsInfo.petType)
         }
-        return this.enquiryBool;
+
     }
 
-    removeRequest(id: number){
-        this.enquiryList.splice(id-1, 1)
-        this.enquiryBool.splice(id-1, 1)
+    getAllPetsData(): Array<petShopData>{
+        return this.petsData
     }
-
+    getCountOfAvailablePets(): object{
+        let availablePets: object = {}
+        for(let pet in this.typeOfPets){
+            let Type = this.petsData.filter((data)=>{
+                return data.petType == this.typeOfPets[pet]
+            })
+            availablePets[this.typeOfPets[pet]] = Type.length;
+        }
+        return availablePets;
+    }
 
 }
 
+type enquiryStatus = "Available" | "Not Available"| "On Hold";
+
+interface enquiryData{
+    enquiries: Array<string>
+    status: enquiryStatus
+}
+
+class Requests{
+    requests: Array<enquiryData>
+    constructor(){
+        this.requests = []
+    }
+
+    insertRequest(request: enquiryData): void{
+        this.requests.push(request);
+    }
+    topFiveEnquiryStatus(availClass: Availability): Array<enquiryData>{
+        let topEnquiries: Array<enquiryData> = []
+        let availablePets: Array<petShopData> = availClass.getAllPetsData();
+        for(let i = 0; i<5; i++){
+            let requestedData = this.requests[i]
+            let petAvailability = true;
+            for(let request in requestedData.enquiries){
+                let value:Array<petShopData> = availablePets.filter((item)=>{
+                    return item.petType == requestedData.enquiries[request];
+                });
+                if (value.length === 0){
+                    petAvailability = false
+                    break;
+                }
+
+            }
+            if (petAvailability){
+                this.requests[i].status = "Available"
+            }
+            else{
+                this.requests[i].status = "Not Available"
+            }
+            topEnquiries.push(this.requests[i])
+        }
+        return topEnquiries;
+    }
+
+}
+
+let pets = new Availability()
+
+pets.insertPets({petType:"Cat", petAge: 4, petColor:"Brown", petGender:"male"});
+pets.insertPets({petType:"Dog", petAge: 7, petColor:"Black", petGender:"female"});
+pets.insertPets({petType:"Dog", petAge: 3, petColor:"white", petGender:"female"});
+pets.insertPets({petType:"Dog", petAge: 10, petColor:"black", petGender:"male"});
+pets.insertPets({petType:"Parrot", petAge: 2, petColor:"Green", petGender:"female"});
+pets.insertPets({petType:"Cat", petAge: 3, petColor:"white", petGender:"male"});
+pets.insertPets({petType:"Cat", petAge: 8, petColor:"Brown", petGender:"male"});
+pets.insertPets({petType:"Parrot", petAge: 11, petColor:"Green", petGender:"female"});
+pets.insertPets({petType:"Parrot", petAge: 5, petColor:"Green", petGender:"male"});
+pets.insertPets({petType:"Dog", petAge: 6, petColor:"Gold", petGender:"female"});
+
+let enquiry = new Requests();
+
+enquiry.insertRequest({enquiries:["Dog", "Parrot"], status:"On Hold"});
+enquiry.insertRequest({enquiries:["Dog", "Cat"], status:"On Hold"});
+enquiry.insertRequest({enquiries:["Cat"], status:"On Hold"});
+enquiry.insertRequest({enquiries:["snake"], status:"On Hold"});
+enquiry.insertRequest({enquiries:["Rabbit", "Parrot"], status:"On Hold"});
 
 
-let avObject = new PetAvailability;
-avObject.insert({type: "Dog", name: "Max", age:3, gender: "Male", color: "red"})
-avObject.insert({type: "Dog", name: "abba", age:8, gender: "Male", color: "brown"})
-avObject.insert({type: "Turtle", name: "sam", age:11, gender: "Female", color: "dark green", owners: 2})
-avObject.insert({type: "Dog", name: "Jojo", age:7, gender: "Male", color: "black"})
-avObject.insert({type: "Cat", name: "meow", age:9, gender: "Female", color: "white", owners: 1})
-avObject.insert({type: "Cat", name: "duggo", age:5, gender: "Female", color: "brown", owners: 3})
-avObject.insert({type: "Parrot", name: "pappu", age:3, gender: "Female", color: "green"})
+console.log("--------All the pets Data--------");
+console.log(pets.getAllPetsData());
+console.log("---------------------------------");
 
+console.log("--------Count of each pet--------");
+console.log(pets.getCountOfAvailablePets());
+console.log("---------------------------------");
 
-
-let delObject = new PetRequest;
-delObject.insert("Dog", "Cat")
-delObject.insert("Dog", "Rabbit")
-delObject.insert("Fish", "Cat")
-delObject.insert("Parrot")
-delObject.insert("Turtle", "Cat")
-delObject.insert("Dog")
-delObject.insert("Dog", "Cat")
-delObject.insert("Cat")
+console.log("---------Top Five Enquiry---------");
+console.log(enquiry.topFiveEnquiryStatus(pets));
+console.log("----------------------------------")
