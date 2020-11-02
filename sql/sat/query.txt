@@ -1,0 +1,68 @@
+USE  sample_by_me;
+
+CREATE TABLE  Profile_status( id int , active_or_not varchar(10) );
+CREATE TABLE  user_profile(id int , user_name varchar(10));
+CREATE TABLE friends(id int, friend_id int);
+CREATE TABLE comments(id int, friend_id_1 int, friend_comment_1 varchar(20),friend_id_2 int, friend_comment_2 varchar(20));
+CREATE TABLE likes( id int,friend_id_1 int, friend_id_2 int);
+CREATE TABLE user_login_details(id int,user_id int, email varchar(20),password varchar(20));
+CREATE TABLE posts(id int, pic_1 varchar(10),pic_2 varchar(10));
+
+
+INSERT INTO Profile_status VALUES (1,'active');
+INSERT INTO Profile_status VALUES (2,'active');
+INSERT INTO Profile_status VALUES (3,'active');
+INSERT INTO Profile_status VALUES (4,'active');
+INSERT INTO Profile_status VALUES (5,'active');
+
+INSERT INTO user_profile VALUES (1,'ram');
+INSERT INTO user_profile VALUES (2,'sam');
+INSERT INTO user_profile VALUES (3,'tom');
+INSERT INTO user_profile VALUES (4,'som');
+INSERT INTO user_profile VALUES (5,'anne');
+
+
+INSERT INTO friends VALUES (1,2);
+INSERT INTO friends VALUES (2,3);
+INSERT INTO friends VALUES (3,4);
+INSERT INTO friends VALUES (4,5);
+INSERT INTO friends VALUES (5,1);
+
+INSERT INTO comments VALUES (1,2,'good',3,'hi');
+INSERT INTO comments VALUES (2,3,'good',4,'hi');
+INSERT INTO comments VALUES (3,5,'good',1,'hi');
+INSERT INTO comments VALUES (4,1,'good',2,'hi');
+INSERT INTO comments VALUES (5,3,'good',4,'hi');
+
+INSERT INTO likes VALUES(1,2,3);
+INSERT INTO likes VALUES(2,3,1);
+INSERT INTO likes VALUES(3,2,1);
+INSERT INTO likes VALUES(4,3,2);
+INSERT INTO likes VALUES(5,4,3);
+
+INSERT INTO user_login_details VALUES(1,1,'1@gmail.com','1234$');
+INSERT INTO user_login_details VALUES(2,2,'2@gmail.com','1234$');
+INSERT INTO user_login_details VALUES(3,3,'3@yahoo.com','1234$');
+INSERT INTO user_login_details VALUES(4,4,'4@gmail.com','1234$');
+INSERT INTO user_login_details VALUES(5,5,'5@yahoo.com','1234$');
+
+INSERT INTO posts VALUES(1,'hi','good');
+INSERT INTO posts VALUES(2,'hi','good');
+INSERT INTO posts VALUES(3,'hi','good');
+INSERT INTO posts VALUES(4,'hi','good');
+INSERT INTO posts VALUES(5,'hi','good');
+
+--  in friends table list the data which are mached with user profile id
+select user_name from user_profile inner join friends on friends.id = user_profile.id;
+
+-- display all the post of user id 5
+select id ,pic_1,pic_2 from posts where id =5;
+
+-- write a query that matching the word s or charecter with %gmail%
+select id , email,password from user_login_details where email LIKE "%gmail%";
+
+-- limt the display data from the table comments for 5 which belongs to the id 3
+select * from comments where id =3 limit 5;
+
+-- combine profile_status and user_profile and user_login_details display matching records
+select * from (user_profile u inner join Profile_status p on u.id =p.id )inner join  user_login_details l on l.id = p.id;
